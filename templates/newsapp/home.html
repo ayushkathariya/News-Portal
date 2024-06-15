@@ -5,5 +5,23 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Hello World</h1>
+  <div>
+    <div class="container mt-4">
+      <h2>Recent News</h2>
+      <div class="d-flex justify-content-between flex-wrap gap-5 mt-2">
+        {% if posts %}
+          {% for post in posts %}
+            <div class="card flex-grow-1" style="width: 18rem;">
+              <img src="{{ post.featured_image.url }}" class="card-img-top" alt="news-img" />
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.content|slice:':250' }}</p>
+                <a href="{% url 'news-detail' post.slug %}" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
 {% endblock %}

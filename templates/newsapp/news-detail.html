@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block content %}
-  <h1>News Detail</h1>
-  <p>{{ slug }}</p>
+  <div class="container mt-5">
+    <div>
+      <h1 class="display-4">{{ post.title }}</h1>
+      <p class="text-muted">By {{ post.author }} | {{ post.created_at }}</p>
+      <p class="text-muted">Category: {{ post.category }}</p>
+      <img src="{{ post.featured_image.url }}" alt="news-image" style="width: 100%;" />
+      <hr />
+      <p>{{ post.content }}</p>
+    </div>
+  </div>
 {% endblock %}
