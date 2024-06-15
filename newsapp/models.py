@@ -5,7 +5,7 @@ from autoslug import AutoSlugField
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    slug = AutoSlugField(populate_from="name", unique=True)
+    slug = AutoSlugField(populate_from="name", unique=True, always_update=True)
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
 
@@ -15,7 +15,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    slug = AutoSlugField(populate_from="title", unique=True)
+    slug = AutoSlugField(populate_from="title", unique=True, always_update=True)
     content = models.TextField()
     author = models.CharField(max_length=100)
     category = models.ForeignKey(
