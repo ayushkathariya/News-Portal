@@ -4,10 +4,13 @@ from autoslug import AutoSlugField
 
 # Create your models here.
 class Category(models.Model):
-    name = models.CharField(max_length=25, unique=True)
+    name = models.CharField(max_length=255, unique=True)
     slug = AutoSlugField(populate_from="name", unique=True)
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Post(models.Model):
@@ -22,3 +25,6 @@ class Post(models.Model):
     is_published = models.BooleanField(default=False)
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
